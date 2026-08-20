@@ -12,7 +12,7 @@
 
 
 
-## 3. Conflicto detectado sobre la interfaz
-Se identifica que en el enunciado descrito por aula 
+## 3. Conflictos
+Se identifica que en el enunciado descrito por aula...
 
 ## 4. Supuestos
