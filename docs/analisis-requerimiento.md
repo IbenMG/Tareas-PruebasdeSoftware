@@ -26,11 +26,8 @@ Revisen el documento completo de la tarea para conocer todos los requisitos, ent
 
 
 ## 3. Supuestos
+- SUP-01: Se asume que cada equipo físico será registrado individualmente en el sistema.
 
-| Supuesto | Descripción |
-|---|---|
-|SUP-01| Se define un máximo de X días que se puede tener el equipo |
-|SUP-02| Se define un máximo de X equipos que se pueden pedir prestados |
-|SUP-03| Solo se puede reservar un equipo cuando el equipo este disponible |
-|SUP-04| Si un usuario se atrasa, habrá algún tipo de penalización |
-|SUP-05| La solicitud se comportara como una unidad completa |
+- SUP-02: Se asume que el encargado tiene autoridad para administrar usuarios, equipos y solicitudes.
+
+- SUP-03: Se asume que la fecha y hora del sistema donde se ejecuta la aplicación son correctas.
