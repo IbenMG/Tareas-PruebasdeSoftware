@@ -1,16 +1,6 @@
 # Análisis del requerimiento
 
-## 1. Contexto
-
-En esta tarea, desarrollada en parejas, deberán analizar, implementar y probar una aplicación wpara gestionar el préstamo de equipos tecnológicos de un laboratorio universitario (Tipo FabLab).
-
-El requerimiento se encuentra incompleto. Por lo tanto, deberán identificar ambigüedades, definir reglas de negocio y justificar sus decisiones. Luego tendrán que implementar la solución y demostrar, mediante actividades de verificación, validción y casos de prueba, que el sistema fue construido correctamente y responde a la necesidad planteada.
-
-La entrega considera el código fuente, documentación, matriz de trazabilidad, ejecución de pruebas, evidencias del trabajo colaborativo en GitHub.
-
-Revisen el documento completo de la tarea para conocer todos los requisitos, entregables y criterios de evaluación. Las consultas deberán realizarse en el foro habilitado.
-
-## 2. Ambigüedades, vacíos, riesgos y conflictos detectados
+## 1. Ambigüedades, vacíos, riesgos y conflictos detectados
 
 | ID | Tipo | Situación detectada | Riesgo o problema asociado | Pregunta al cliente |
 |---|---|---|---|---|
@@ -25,9 +15,77 @@ Revisen el documento completo de la tarea para conocer todos los requisitos, ent
 | ANA-09 | Ambigüedad | Se permiten solicitudes de uno o más equipos, pero no se indica qué pasa si solo algunos están disponibles | No está claro si se aprueba parcialmente o se rechaza todo | ¿Qué debe ocurrir cuando una solicitud contiene varios equipos y alguno de ellos no se encuentra disponible? |
 
 
-## 3. Supuestos
-- SUP-01: Se asume que cada equipo físico será registrado individualmente en el sistema.
+## 2. Supuestos
+Se generan preguntas y supuestos para avanzar en el análisis.
 
-- SUP-02: Se asume que el encargado tiene autoridad para administrar usuarios, equipos y solicitudes.
+**¿Cómo se ingresarán los equipos al sistema?**
+    
+  - **SUP-01:** Se asume que cada equipo físico será registrado individualmente en el sistema, permitiendo identificar de manera única cada unidad.
 
-- SUP-03: Se asume que la fecha y hora del sistema donde se ejecuta la aplicación son correctas.
+**¿El Encargado es la máxima autoridad del sistema?**
+    
+  - **SUP-02:** Se asume que el encargado tiene autoridad total para administrar usuarios, equipos y solicitudes, sin necesidad de crear roles administrativos adicionales.
+    
+**¿La aplicación debe sincronizarse con algún servidor de hora externo?**
+    
+  - **SUP-03:** Al ser una aplicación local, se asume que la fecha y hora del sistema operativo donde se ejecuta son correctas y no serán manipuladas para evitar atrasos.
+    
+**Si alguien pide más de un equipo, ¿debe devolverlos todos juntos?**
+    
+  - **SUP-04:** Se asume que los préstamos que incluyen un conjunto de equipos se tratan como una unidad indivisible y deben devolverse al mismo tiempo (no hay devoluciones parciales).
+
+## 3. Requerimiento Mejorado
+
+El laboratorio universitario necesita una aplicación, protegida mediante inicio de sesión, para gestionar el préstamo de equipos tecnológicos. 
+El sistema deberá soportar dos roles: **Solicitantes**  y **Encargados**.
+
+Los **Solicitantes** podrán consultar el catálogo de equipos, crear solicitudes (por un máximo de 3 equipos y una duración límite de 7 días), consultar sus préstamos y cancelar solicitudes siempre y cuando el equipo no haya sido entregado. El sistema bloqueará la creación de nuevas solicitudes a usuarios que posean devoluciones atrasadas.
+
+Los **Encargados** administrarán a los usuarios y el estado del inventario (incluyendo equipos en mantenimiento). Además, serán los responsables de aprobar o rechazar las solicitudes entrantes, registrar las entregas físicas y las devoluciones. Todas las operaciones críticas generarán un log de eventos. No se contemplan notificaciones por correo ni renovaciones de préstamos.
+
+## 4. Regla de negocios, alcance y exclusiones
+
+### Reglas de negocio
+
+| ID | Regla |
+|---|---|
+| RN-01 | Un solicitante podrá mantener como máximo 3 equipos simultáneamente. |
+| RN-02 | La duración máxima de un préstamo será de 7 días. |
+| RN-03 | Un solicitante con préstamos atrasados no podrá realizar nuevas solicitudes. |
+| RN-04 | Una solicitud con varios equipos será tratada como una unidad completa. |
+| RN-05 | Una solicitud podrá cancelarse mientras se encuentre solicitada o aprobada. |
+| RN-06 | Una solicitud entregada no podrá cancelarse y deberá finalizar mediante devolución. |
+| RN-07 | Un equipo en mantenimiento o fuera de servicio no podrá ser solicitado. |
+| RN-08 | No se permitirán renovaciones de préstamos. |
+
+### Alcance
+La aplicación podrá permitir:
+
+- Registrar personas autorizadas.
+- Registrar y consultar equipos.
+- Crear solicitudes de préstamo.
+- Aprobar o rechazar solicitudes.
+- Cancelar solicitudes cuando corresponda.
+- Registrar entrega y devolución de equipos.
+- Consultar préstamos vigentes, futuros y atrasados.
+- Registrar eventos relevantes mediante logs.
+
+### Exclusiones
+La aplicación no podrá:
+
+- Notificar por correo electrónico
+- Renovar equipos
+- Hacer una reserva parcial con múltiples equipos
+
+## 5. Criterios de aceptación
+
+
+| **CA-ID** | **Descripción**|
+| --- | --- |
+| CA-01     | **Dado** que un usuario intenta realizar una operación en el sistema, **Cuando** no ha iniciado sesión con credenciales válidas y un rol definido, **Entonces** el sistema debe denegar el acceso y solicitar la autenticación.                                                                 |
+| CA-02     | **Dado** que un solicitante está creando una nueva reserva, **Cuando** la solicitud excede los 7 días de duración o incluye más de 3 equipos, **Entonces** el sistema debe rechazar la creación y mostrar un mensaje indicando el límite excedido.                                              |
+| CA-03     | **Dado** que un solicitante posee al menos un préstamo en estado "ATRASADO", **Cuando** intente acceder a la opción de crear nuevas solicitudes, **Entonces** el sistema debe bloquear la acción advirtiendo que aun tiene entregas atrasadas pendientes.                                                           |
+| CA-04     | **Dado** que un encargado intenta aprobar una solicitud que incluye múltiples equipos, **Cuando** al menos uno de los equipos solicitados no se encuentra disponible, **Entonces** el sistema debe impedir la acción y rechazar la solicitud por completo, sin permitir aprobaciones parciales. |
+| CA-05     | **Dado** que una solicitud de préstamo ha pasado al estado "ENTREGADO", **Cuando** el usuario (solicitante o encargado) revise las acciones disponibles para dicha solicitud, **Entonces** el sistema debe ocultar o bloquear la opción de "Cancelar".                                          |
+| CA-06     | **Dado** que un encargado ha marcado el estado físico de un equipo como "En mantenimiento", **Cuando** el sistema calcule la disponibilidad general para nuevas solicitudes, **Entonces** ese equipo será removido automáticamente del conteo de unidades disponibles.                          |
+
