@@ -122,5 +122,6 @@ La aplicación no podrá:
 | **CA-13** | **Dado** que un encargado intenta registrar una devolución, **Cuando** los préstamos correspondientes no hayan sido previamente "ENTREGADOS", **Entonces** el sistema deberá impedir la operación.                                                                                                        |
 | **CA-14** | **Dado** que un préstamo ya se encuentra "APROBADO" o "ENTREGADO", **Cuando** un usuario intente modificar la fecha de devolución, **Entonces** el sistema no deberá permitir la renovación.                                                                                                              |
 | **CA-15** | **Dado** que un usuario o el sistema ejecuta una operación errónea (ej. inicio de sesión fallido, aprobación, entrega o devolución), **Cuando** la transacción finalice, **Entonces** el sistema deberá registrar automáticamente el evento mediante logs para asegurar la trazabilidad de los registros. |
-
-
+| **CA-16** | **Dado** que un solicitante autenticado selecciona uno o más equipos disponibles y cumple todas las reglas de negocio, **Cuando** cree una solicitud de préstamo, **Entonces** el sistema deberá registrarla correctamente en estado "SOLICITADA". |
+| **CA-17** | **Dado** que un solicitante autenticado desea conocer los equipos del laboratorio, **Cuando** consulte el catálogo, **Entonces** el sistema deberá mostrar los equipos registrados junto con su identificador, nombre y estado actual. |
+| **CA-18** | **Dado** que un solicitante autenticado posee solicitudes o préstamos registrados, **Cuando** consulte sus préstamos, **Entonces** el sistema deberá mostrar únicamente los registros asociados a dicho usuario, incluyendo equipos, fechas y estado. |
