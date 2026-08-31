@@ -1,0 +1,18 @@
+2026-08-31 00:00:37,937 - INFO - Inicio de sesión exitoso: alumno@lab.cl (SOLICITANTE)
+2026-08-31 00:06:32,311 - INFO - Inicio de sesión exitoso: alumno@lab.cl (SOLICITANTE)
+2026-08-31 00:07:33,025 - INFO - Inicio de sesión exitoso: alumno@lab.cl (SOLICITANTE)
+2026-08-31 00:07:59,545 - INFO - Solicitud 1 creada por el usuario 2.
+2026-08-31 00:08:30,743 - INFO - Solicitud 1 cancelada por el usuario 2.
+2026-08-31 00:09:02,327 - INFO - Inicio de sesión exitoso: encargado@lab.cl (ENCARGADO)
+2026-08-31 00:29:24,010 - INFO - Inicio de sesión exitoso: encargado@lab.cl (ENCARGADO)
+2026-08-31 00:29:35,701 - INFO - Cierre de sesión: 1
+2026-08-31 00:29:43,882 - INFO - Inicio de sesión exitoso: alumno@lab.cl (SOLICITANTE)
+2026-08-31 00:29:51,234 - INFO - Solicitud 2 creada por 2.
+2026-08-31 00:29:54,097 - INFO - Cierre de sesión: 2
+2026-08-31 00:30:06,121 - INFO - Inicio de sesión exitoso: encargado@lab.cl (ENCARGADO)
+2026-08-31 00:30:19,597 - INFO - Solicitud 2 cambiada a APROBADA por Encargado 1
+2026-08-31 00:30:30,220 - INFO - Entrega de solicitud 2 registrada por Encargado 1
+2026-08-31 00:30:39,466 - INFO - Devolución de solicitud 2 registrada por Encargado 1
+2026-08-31 00:34:48,896 - INFO - Inicio de sesión exitoso: encargado@lab.cl (ENCARGADO)
+2026-08-31 00:35:20,933 - INFO - Usuario 3 (SOLICITANTE) creado por Encargado 1
+2026-08-31 00:35:46,597 - INFO - Estado de equipo 1 cambiado a DISPONIBLE por Encargado 1

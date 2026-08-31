@@ -1,0 +1,75 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nombre": "Profesor Encargado",
+            "correo": "encargado@lab.cl",
+            "password": "admin",
+            "rol": "ENCARGADO"
+        },
+        {
+            "id": 2,
+            "nombre": "Juan Pérez",
+            "correo": "alumno@lab.cl",
+            "password": "1234",
+            "rol": "SOLICITANTE"
+        },
+        {
+            "id": 3,
+            "nombre": "rob",
+            "correo": "r",
+            "password": "a",
+            "rol": "SOLICITANTE"
+        }
+    ],
+    "equipos": [
+        {
+            "id": 1,
+            "nombre": "Notebook Lenovo",
+            "estado": "DISPONIBLE"
+        },
+        {
+            "id": 2,
+            "nombre": "Cámara Canon",
+            "estado": "DISPONIBLE"
+        },
+        {
+            "id": 3,
+            "nombre": "Proyector Epson",
+            "estado": "DISPONIBLE"
+        },
+        {
+            "id": 4,
+            "nombre": "Tablet Wacom",
+            "estado": "MANTENIMIENTO"
+        },
+        {
+            "id": 5,
+            "nombre": "Arduino Mega",
+            "estado": "PRESTADO"
+        }
+    ],
+    "solicitudes": [
+        {
+            "id": 1,
+            "usuario_id": 2,
+            "equipos_ids": [
+                1,
+                2
+            ],
+            "fecha_inicio": "2026-08-31",
+            "fecha_devolucion": "2026-09-07",
+            "estado": "CANCELADA"
+        },
+        {
+            "id": 2,
+            "usuario_id": 2,
+            "equipos_ids": [
+                1
+            ],
+            "fecha_inicio": "2026-08-31",
+            "fecha_devolucion": "2026-09-07",
+            "estado": "DEVUELTA"
+        }
+    ]
+}
