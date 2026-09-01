@@ -17,7 +17,8 @@ def mostrar_opciones():
     print("3. Aprobar o rechazar solicitudes")
     print("4. Registrar entrega de equipos")
     print("5. Registrar devolución de equipos")
-    print("6. Cerrar sesión")
+    print("6. Consultar préstamos atrasados")
+    print("7. Cerrar sesión")
 
 def administrar_usuarios(usuario_actual):
     print("\n--- ADMINISTRAR USUARIOS ---")
@@ -340,6 +341,40 @@ def devolucion(usuario_actual):
     except Exception as e:
         print(f"Error inesperado: {e}")
 
+def consultar_atrasos(usuario_actual):
+    print("\n--- REPORTE DE PRÉSTAMOS ATRASADOS ---")
+    try:
+        datos = Database.cargar_datos()
+        # Filtramos solo las que están en manos de los alumnos
+        entregadas = [s for s in datos.get("solicitudes", []) if s["estado"] == "ENTREGADA"]
+        
+        hoy = datetime.now().date()
+        atrasadas = []
+        
+        for sol in entregadas:
+            fecha_dev = datetime.strptime(sol["fecha_devolucion"], "%Y-%m-%d").date()
+            if fecha_dev < hoy:
+                dias_atraso = (hoy - fecha_dev).days
+                sol["dias_atraso"] = dias_atraso
+                atrasadas.append(sol)
+                
+        if not atrasadas:
+            print("¡Excelente! No hay ningún préstamo atrasado en el sistema.")
+            return
+            
+        # Esta es exactamente la vista que exige la VAL-04
+        print(f"{'ID':<5} | {'USR_ID':<8} | {'EQUIPOS':<15} | {'DÍAS ATRASO':<12}")
+        print("-" * 50)
+        
+        # Ordenamos de mayor a menor atraso para que sea más útil
+        atrasadas_ordenadas = sorted(atrasadas, key=lambda x: x["dias_atraso"], reverse=True)
+        
+        for sol in atrasadas_ordenadas:
+            print(f"{sol['id']:<5} | {sol['usuario_id']:<8} | {str(sol['equipos_ids']):<15} | {sol['dias_atraso']:<12}")
+            
+    except Exception as e:
+        print(f"Error inesperado al consultar atrasos: {e}")
+        
 def iniciar_menu(usuario_actual):
     while True:
         mostrar_opciones()
@@ -356,6 +391,8 @@ def iniciar_menu(usuario_actual):
         elif opcion == "5":
             devolucion(usuario_actual)
         elif opcion == "6":
+            consultar_atrasos(usuario_actual)
+        elif opcion == "7":
             print("Cerrando sesión de Encargado...")
             logging.info(f"Cierre de sesión: {usuario_actual.id}")
             break

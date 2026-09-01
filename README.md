@@ -15,7 +15,7 @@ El proyecto fue realizado como parte de la asignatura **Pruebas de Software**, c
 | Integrante | Rol |
 |---|---|
 | Iben Muñoz | 202204674-0 |
-| Benjamín Araos | Por completar |
+| Benjamín Araos | 202273637-2 |
 
 ---
 
@@ -298,5 +298,26 @@ Validación de reglas
 Si las reglas de negocio no se cumplen, la operación debe ser rechazada y el sistema debe informar el motivo correspondiente.
 
 ---
+
+## Pruebas Automatizadas (test.py)
+
+
+Valida las reglas de negocio y transiciones de estado (TC-11 al TC-20) usando Pytest. Utiliza mocking para simular la base de datos, asegurando que los datos reales no se modifiquen.
+
+Ejecución (desde la raíz del proyecto):
+
+Toda la suite: py -m pytest tests/test.py -v
+
+Prueba individual: py -m pytest "tests/test.py::test_11" -v (usa comillas en PowerShell).
+
+## Declaración de Uso de Inteligencia Artificial
+
+* **Herramienta utilizada:** Asistente de IA (Gemini).
+* **Propósito principal:** Apoyo en la creación del código, automatización de pruebas con Pytest y generación de scripts de validación de rendimiento. La IA se utilizó como herramienta de traducción de esta lógica a código Python y para reescribir a un lenguaje más profesional.
+* **Ejemplos de prompts utilizados:**
+  * *"Puedes ayudarme a terminar el trabajo, realiza todo el código de test_prestamos_service, en el cual se corrobora la implementación de todas las pruebas."*
+  * *"Cómo funciona, es posible hacer un pequeño hud en el que tenga que seleccionar el test?"*
+* **Resultados aceptados y verificados:** Se integró el uso del módulo `unittest.mock` (específicamente `monkeypatch`) sugerido por la IA para automatizar las pruebas unitarias aislando la base de datos local. También se implementó un script de validación (`validacion.py`) para medir el tiempo de respuesta del sistema. Todos los códigos fueron ejecutados, probados y verificados localmente en la terminal.
+* **Decisiones no delegadas:** El levantamiento de requerimientos, la definición de las reglas de negocio, la creación de la matriz de trazabilidad y el diseño de los Casos de Prueba (TC) y validaciones (VAL) fueron realizados por el equipo.
 
 Proyecto desarrollado para la asignatura **Pruebas de Software**.

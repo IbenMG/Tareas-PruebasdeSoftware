@@ -16,3 +16,34 @@
 2026-08-31 00:34:48,896 - INFO - Inicio de sesi√≥n exitoso: encargado@lab.cl (ENCARGADO)
 2026-08-31 00:35:20,933 - INFO - Usuario 3 (SOLICITANTE) creado por Encargado 1
 2026-08-31 00:35:46,597 - INFO - Estado de equipo 1 cambiado a DISPONIBLE por Encargado 1
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a PRESTADO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a MANTENIMIENTO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a DISPONIBLE
+2026-09-01 13:14:20,135 - INFO - Inicio de sesi√≥n exitoso: encargado@lab.cl (ENCARGADO)
+2026-09-01 13:14:24,529 - INFO - Cierre de sesi√≥n: 1
+2026-09-01 13:14:34,189 - INFO - Inicio de sesi√≥n exitoso: r (SOLICITANTE)
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a PRESTADO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a MANTENIMIENTO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a DISPONIBLE
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a PRESTADO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a MANTENIMIENTO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a DISPONIBLE
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a PRESTADO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a MANTENIMIENTO
+INFO:root:VAL-05 SIMULACION: Estado de equipo 1 cambiÛ a DISPONIBLE
+2026-09-01 13:18:39,234 - INFO - Inicio de sesi√≥n exitoso: encargado@lab.cl (ENCARGADO)
+2026-09-01 13:18:43,357 - INFO - Cierre de sesi√≥n: 1
+2026-09-01 13:19:01,866 - INFO - Inicio de sesi√≥n exitoso: alumno@lab.cl (SOLICITANTE)
+2026-09-01 13:23:17,416 - WARNING - Intento fallido (Usuario no existe): 
+2026-09-01 13:23:21,305 - INFO - Inicio de sesi√≥n exitoso: r (SOLICITANTE)
+2026-09-01 13:23:33,378 - INFO - Solicitud 3 creada por 3.
+2026-09-01 13:23:48,300 - INFO - Solicitud 4 creada por 3.
+2026-09-01 13:23:55,056 - INFO - Cierre de sesi√≥n: 3
+2026-09-01 13:24:07,033 - INFO - Inicio de sesi√≥n exitoso: alumno@lab.cl (SOLICITANTE)
+2026-09-01 13:24:16,843 - WARNING - Solicitud rechazada (2): El equipo 'C√°mara Canon' no est√° disponible.
+2026-09-01 13:26:29,215 - INFO - Cierre de sesi√≥n: 2
+2026-09-01 13:26:48,783 - INFO - Inicio de sesi√≥n exitoso: encargado@lab.cl (ENCARGADO)
+2026-09-01 13:28:21,462 - INFO - Solicitud 3 cambiada a APROBADA por Encargado 1
+2026-09-01 13:29:13,490 - INFO - Entrega de solicitud 3 registrada por Encargado 1
+2026-09-01 13:32:56,916 - WARNING - Intento fallido (Usuario no existe): 
+2026-09-01 13:33:08,347 - INFO - Inicio de sesi√≥n exitoso: encargado@lab.cl (ENCARGADO)

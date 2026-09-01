@@ -26,12 +26,12 @@
         {
             "id": 1,
             "nombre": "Notebook Lenovo",
-            "estado": "DISPONIBLE"
+            "estado": "PRESTADO"
         },
         {
             "id": 2,
             "nombre": "Cámara Canon",
-            "estado": "DISPONIBLE"
+            "estado": "SOLICITADO"
         },
         {
             "id": 3,
@@ -70,6 +70,26 @@
             "fecha_inicio": "2026-08-31",
             "fecha_devolucion": "2026-09-07",
             "estado": "DEVUELTA"
+        },
+        {
+            "id": 3,
+            "usuario_id": 3,
+            "equipos_ids": [
+                1
+            ],
+            "fecha_inicio": "2026-08-01",
+            "fecha_devolucion": "2026-08-08",
+            "estado": "ENTREGADA"
+        },
+        {
+            "id": 4,
+            "usuario_id": 3,
+            "equipos_ids": [
+                2
+            ],
+            "fecha_inicio": "2026-09-01",
+            "fecha_devolucion": "2026-09-08",
+            "estado": "SOLICITADA"
         }
     ]
 }

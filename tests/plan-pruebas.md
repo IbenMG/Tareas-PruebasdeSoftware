@@ -17,15 +17,29 @@
 
 ## Benjamin Araos
 
+El archivo [Ver captura](../tests/validacion.py) contiene pruebas automatizadas construida con **Pytest** para validar los casos **TC-11 al TC-20**. Su objetivo es comprobar que el código cumple con las reglas de negocio. Aisla las pruebas, evitando modificar los datos del entorno real.
+
+**Instrucciones de Ejecución** Asegúrate de tener Pytest instalado. Ubícate en la carpeta raíz del proyecto desde tu terminal y utiliza los siguientes comandos:
+
+- **Para ejecutar todas las pruebas a la vez:**
+    ```
+    py -m pytest tests/test.py -v
+    ```
+- **Para ejecutar una prueba específica (ej. test_11):** 
+    ```
+    py -m pytest "tests/test.py::test_11" -v
+    ```
+
+
 | ID | Descripción | Estado |Link a la prueba |
 |---|---|---|---|
-| **TC-11** | Verificar que un encargado pueda registrar correctamente un nuevo equipo y que este quede inicialmente disponible. | PENDIENTE ||
-| **TC-12** | Verificar que una solicitud válida en estado `SOLICITADA` pueda ser aprobada. | PENDIENTE ||
-| **TC-13** | Verificar que una solicitud en estado `SOLICITADA` pueda ser rechazada por el encargado. | PENDIENTE ||
-| **TC-14** | Verificar que una solicitud pueda cancelarse únicamente en los estados permitidos y no después de ser entregada. | PENDIENTE ||
-| **TC-15** | Verificar el flujo completo `SOLICITADA → APROBADA → ENTREGADA → DEVUELTA` y la actualización del estado de los equipos. | PENDIENTE ||
-| **TC-16** | Verificar que no pueda aprobarse una solicitud si uno de sus equipos pasa a mantenimiento antes de la aprobación. | PENDIENTE ||
-| **TC-17** | Verificar que no sea posible renovar o extender la fecha de devolución de un préstamo aprobado o entregado. | PENDIENTE ||
-| **TC-18** | Verificar que las operaciones relevantes del sistema queden registradas en `app.log`. | PENDIENTE ||
-| **TC-19** | Verificar que el solicitante pueda consultar el catálogo mostrando ID, nombre y estado de los equipos. | PENDIENTE ||
-| **TC-20** | Verificar que un solicitante pueda consultar únicamente sus propios préstamos y solicitudes. | PENDIENTE ||
+| **TC-11** | Verificar que un encargado pueda registrar correctamente un nuevo equipo y que este quede inicialmente disponible.       | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test11.jpg)       |
+| **TC-12** | Verificar que una solicitud válida en estado `SOLICITADA` pueda ser aprobada.                                            | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test12.jpg)       |
+| **TC-13** | Verificar que una solicitud en estado `SOLICITADA` pueda ser rechazada por el encargado.                                 | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test13_14_15.jpg) |
+| **TC-14** | Verificar que una solicitud pueda cancelarse únicamente en los estados permitidos y no después de ser entregada.         | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test13_14_15.jpg) |
+| **TC-15** | Verificar el flujo completo `SOLICITADA → APROBADA → ENTREGADA → DEVUELTA` y la actualización del estado de los equipos. | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test13_14_15.jpg) |
+| **TC-16** | Verificar que no pueda aprobarse una solicitud si uno de sus equipos pasa a mantenimiento antes de la aprobación.        | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test16_17_18.jpg) |
+| **TC-17** | Verificar que no sea posible renovar o extender la fecha de devolución de un préstamo aprobado o entregado.              | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test16_17_18.jpg) |
+| **TC-18** | Verificar que las operaciones relevantes del sistema queden registradas en `app.log`.                                    | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test16_17_18.jpg) |
+| **TC-19** | Verificar que el solicitante pueda consultar el catálogo mostrando ID, nombre y estado de los equipos.                   | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test19_20.jpg)    |
+| **TC-20** | Verificar que un solicitante pueda consultar únicamente sus propios préstamos y solicitudes.                             | PASSED     | [Ver captura](../tests/evidencias-testing11-20/test19_20.jpg)    |
