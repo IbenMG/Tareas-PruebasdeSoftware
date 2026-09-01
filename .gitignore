@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+code/database/datos.json
+tests/test_prestamos_service.py

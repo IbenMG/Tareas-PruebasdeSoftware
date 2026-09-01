@@ -194,12 +194,16 @@ def solicitudes(usuario_actual):
             print("Acción inválida. Operación cancelada.")
             return
 
-        # Reconstruir objeto mínimo para el servicio
+        equipos_objs = []
+        for eq_json in datos.get("equipos", []):
+            if eq_json["id"] in solicitud_json["equipos_ids"]:
+                equipos_objs.append(Equipo(eq_json["id"], eq_json["nombre"], eq_json["estado"]))
+
         usr_mock = Usuario(id=solicitud_json["usuario_id"], nombre="", correo="", password="", rol="")
         f_ini = datetime.strptime(solicitud_json["fecha_inicio"], "%Y-%m-%d").date()
         f_dev = datetime.strptime(solicitud_json["fecha_devolucion"], "%Y-%m-%d").date()
         
-        sol_obj = SolicitudPrestamo(solicitud_json["id"], usr_mock, [], f_ini, f_dev)
+        sol_obj = SolicitudPrestamo(solicitud_json["id"], usr_mock, equipos_objs, f_ini, f_dev)
         sol_obj.estado = solicitud_json["estado"]
 
         service = PrestamoService()
@@ -211,6 +215,11 @@ def solicitudes(usuario_actual):
         # Si el servicio aprueba el cambio, guardamos
         if resultado:
             solicitud_json["estado"] = sol_obj.estado
+            for eq_obj in sol_obj.equipos:
+                for eq_json in datos["equipos"]:
+                    if eq_json["id"] == eq_obj.id:
+                        eq_json["estado"] = eq_obj.estado
+                        break
             Database.guardar_datos(datos)
             print(f"\n¡Éxito! {mensaje}")
             logging.info(f"Solicitud {sol_obj.id} cambiada a {sol_obj.estado} por Encargado {usuario_actual.id}")

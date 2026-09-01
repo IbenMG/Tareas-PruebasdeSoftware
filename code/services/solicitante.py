@@ -59,10 +59,16 @@ def solicitud_prestamo(usuario_actual):
         for sol_json in solicitudes_json:
             fecha_inicio_obj = datetime.strptime(sol_json["fecha_inicio"], "%Y-%m-%d").date()
             fecha_dev_obj = datetime.strptime(sol_json["fecha_devolucion"], "%Y-%m-%d").date()
-            
+
+            equipos_activos = [
+                Equipo(id=eq["id"], nombre=eq["nombre"], estado=eq["estado"])
+                for eq in equipos_json
+                if eq["id"] in sol_json.get("equipos_ids", [])
+            ]
+
             from models.usuario import Usuario
             usr_mock = Usuario(id=sol_json["usuario_id"], nombre="", correo="", password="", rol="")
-            sol_obj = SolicitudPrestamo(sol_json["id"], usr_mock, [], fecha_inicio_obj, fecha_dev_obj)
+            sol_obj = SolicitudPrestamo(sol_json["id"], usr_mock, equipos_activos, fecha_inicio_obj, fecha_dev_obj)
             sol_obj.estado = sol_json["estado"]
             prestamos_activos.append(sol_obj)
 
@@ -81,6 +87,13 @@ def solicitud_prestamo(usuario_actual):
         )
 
         if solicitud_creada:
+            for eq in solicitud_creada.equipos:
+                eq.estado = "SOLICITADO"
+                for eq_json in datos["equipos"]:
+                    if eq_json["id"] == eq.id:
+                        eq_json["estado"] = eq.estado
+                        break
+
             datos["solicitudes"].append({
                 "id": solicitud_creada.id,
                 "usuario_id": usuario_actual.id,
@@ -154,6 +167,11 @@ def cancelar_solicitud(usuario_actual):
         
         if resultado:
             solicitud_json["estado"] = sol_obj.estado
+            for eq_id in solicitud_json["equipos_ids"]:
+                for eq_json in datos["equipos"]:
+                    if eq_json["id"] == eq_id:
+                        eq_json["estado"] = "DISPONIBLE"
+                        break
             Database.guardar_datos(datos)
             print(f"\n¡Éxito! {mensaje}")
         else:

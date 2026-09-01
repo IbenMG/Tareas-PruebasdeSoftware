@@ -37,7 +37,9 @@ class PrestamoService:
         if duracion > self.MAX_DIAS_PRESTAMO:
             return False, "El préstamo no puede superar los 7 días."
 
-        # RN-03: usuario con préstamo atrasado no puede solicitar
+        # RN-03: solo bloquea una nueva solicitud si el préstamo sigue vigente
+        # y ya venció su fecha de devolución. Un préstamo devuelto no puede
+        # seguir considerándose como atrasado.
         hoy = datetime.now().date()
 
         for prestamo in prestamos_activos:
@@ -117,6 +119,9 @@ class PrestamoService:
 
         solicitud.estado = "RECHAZADA"
 
+        for equipo in solicitud.equipos:
+            equipo.estado = "DISPONIBLE"
+
         return True, "Solicitud rechazada correctamente."
 
     def cancelar_solicitud(self, solicitud):
@@ -127,6 +132,9 @@ class PrestamoService:
             )
 
         solicitud.estado = "CANCELADA"
+
+        for equipo in solicitud.equipos:
+            equipo.estado = "DISPONIBLE"
 
         return True, "Solicitud cancelada correctamente."
 
