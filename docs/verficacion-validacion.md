@@ -12,13 +12,13 @@ Comprobar que el código y la lógica de la aplicación cumplen con nuestras Reg
 # Actividades
 ## Verificación
 
-| **ID**     | **Objetivo**                                                                                                                              | **Responsable** | **Evidencia**                                                                   | **Resultado** | **Conclusión** |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------- | ------------- | -------------- |
-| **VER-01** | Comprobar mediante pruebas unitarias que la lógica rechaza préstamos de > 3 equipos o > 7 días.                                           |                 | Captura de pantalla mostrando el mensaje de error al exceder el límite. |               |                |
-| **VER-02** | Verificar el correcto manejo de excepciones ante ingresos inválidos en la terminal (ej. escribir letras en vez de IDs numéricos).         |                 | Captura del mensaje de error controlado (sin que el programa sufra un error. |               |                |
-| **VER-03** | Verificar, mediante revisión de código estático, que la solicitud se trata como indivisible y no existen métodos de "devolución parcial". |                 | Enlace al fragmento de código revisado. |               |                |
-| **VER-04** | Comprobar que los datos (usuarios, equipos, estados) se guardan y recuperan íntegramente desde el archivo local de persistencia.          |                 | Archivo local antes y después de cerrar el programa.                 |               |                |
-| **VER-05** | Asegurar que los logs registran correctamente los eventos de inicio de sesión fallidos sin exponer contraseñas.                           |                 | Archivo `.log` generado.                             |               |                |
+| **ID**     | **Objetivo** |**Responsable** | **Evidencia** | **Resultado** | **Conclusión** |
+| ---------- | -------------| -------------  | --------------| ------------- | -------------- |
+| **VER-01** | Comprobar mediante pruebas unitarias que la lógica rechaza préstamos de > 3 equipos o > 7 días.| Iben| [Ver evidencia](../tests/evidencias-testing1-10/TC-04/) | PASS |La lógica de negocio rechazó correctamente solicitudes que exceden los límites establecidos. |               |
+| **VER-02** | Verificar el correcto manejo de excepciones ante ingresos inválidos en la terminal (ej. escribir letras en vez de IDs numéricos).|  Iben | [Ver evidencia](../tests/evidencias-testing1-10/VER-02/). |  ✓            | El sistema manejó correctamente la entrada inválida y continuó su ejecución sin finalizar inesperadamente. |
+| **VER-03** | Verificar, mediante revisión de código estático, que la solicitud se trata como indivisible y no existen métodos de "devolución parcial". |  Iben | [Ver implementación en GitHub](../code/main.py) | ✓            |  La revisión estática confirmó que las solicitudes múltiples se procesan como una unidad y que la implementación no contempla devoluciones parciales.              |
+| **VER-04** | Comprobar que los datos (usuarios, equipos, estados) se guardan y recuperan íntegramente desde el archivo local de persistencia.          |  Iben               |  [Ver antes](../tests/evidencias-testing1-10/VER-04a/).  [Ver antes](../tests/evidencias-testing1-10/VER-04b/).               |  ✓             |   Se comprobó que los cambios realizados durante la ejecución permanecen almacenados después de cerrar y volver a iniciar la aplicación.             | 
+| **VER-05** | Asegurar que los logs registran correctamente los eventos de inicio de sesión fallidos sin exponer contraseñas.                           |   Iben              | [Ver log](../tests/app.log)                        |      ✓         |     El intento fallido de autenticación quedó registrado correctamente en el log sin exponer la contraseña utilizada.           |
 
 ## Validación
 
