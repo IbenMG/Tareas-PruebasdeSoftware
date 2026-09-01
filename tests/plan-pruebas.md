@@ -4,7 +4,7 @@
 
 | ID | Descripción | Estado | Link a la prueba |
 |---|---|---|---|
-| **TC-01** | Verificar inicio de sesión correcto con credenciales válidas de un solicitante. |  ✓ |[Ver evidencia](evidencias-testing1-10/TC-01/)|
+| **TC-01** | Verificar inicio de sesión correcto con credenciales válidas de un solicitante. |  ✓ |[Ver evidencia](evidencias-testing1-10/TC-01.png/)|
 | **TC-02** | Verificar que se rechace el inicio de sesión con contraseña incorrecta. |  ✓ |[Ver evidencia](evidencias-testing1-10/TC-02/)|
 | **TC-03** | Verificar la creación correcta de una solicitud válida con equipos disponibles. | ✓ |[Ver evidencia](evidencias-testing1-10/TC-03/)|
 | **TC-04** | Verificar que se rechace una solicitud de más de 3 equipos simultáneos. |  ✓ |[Ver evidencia](evidencias-testing1-10/TC-04/)|
